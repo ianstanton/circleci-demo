@@ -1,9 +1,19 @@
 version: 2.1
 
 orbs:
-    hello: circleci/hello-build@0.0.7 # uses the circleci/buildpack-deps Docker image
+  terraform: ovotech/terraform@1.4.35
 
 workflows:
-    "Hello Workflow":
-        jobs:
-          - hello/hello-build
+  test:
+    jobs:
+      - terraform/plan:
+          path: tf
+          filters:
+            branches:
+              ignore: master
+
+      # - terraform/apply:
+      #     path: tf
+      #     filters:
+      #       branches:
+      #         only: master
