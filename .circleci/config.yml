@@ -11,4 +11,9 @@ workflows:
           filters:
             branches:
               ignore: master
-#test
+
+      - terraform/apply:
+          path: tf
+          filters:
+            branches:
+              only: master
